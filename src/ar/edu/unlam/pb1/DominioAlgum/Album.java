@@ -104,6 +104,22 @@ public class Album {
 	}
 
 	public void ordenarFiguritasActuales() {
+		Figurita auxiliar=null;
+		boolean sepudo=false;
+		for (int i = 0; i < figuritasActuales.length; i++) {
+			for (int j = 0; j < figuritasActuales.length-1; j++) {
+				if(figuritasActuales[i]!=null &&figuritasActuales[j+1]!=null ) {
+					if(figuritasActuales[j].getCodigo().compareTo(figuritasActuales[j+1].getCodigo())<0) {
+						auxiliar=figuritasActuales[j+1];
+						figuritasActuales[j+1]=figuritasActuales[j];
+						figuritasActuales[j]=auxiliar;
+						sepudo=true;
+			}
+		}
+		
+			}
+		}
+		
 		/*
 		 * Debe ordenar el array figuritasActuales
 		 */
