@@ -1,5 +1,7 @@
 package ar.edu.unlam.pb1.DominioAlgum;
 
+import java.util.Arrays;
+
 public class Album {
 
 	private static String selecciones[] = { "Qatar", "Ecuador", "Senegal", "Paises Bajos", "Inglaterra", "Irán", "EEUU",
@@ -126,20 +128,55 @@ public class Album {
 	}
 
 	public boolean elAlbumEstaCompleto() {
+		boolean estaCompleto=false;
+		if(calcularPorcentajeCompletado()==100)
+		estaCompleto=true;
+		else {
+			estaCompleto=false;
+		}
+		
+		
+		
+		
+		
 		/*
 		 * Debe verificar que todas las figuritas disponibles estén presentes al menos
 		 * una vez en las figuritas actuales
 		 */
-		return false;
+		return estaCompleto;
 	}
 
+	
 	public double calcularPorcentajeCompletado() {
+		double porcentaje =0;
+		double porcentajequesemultiplica=100;
+		double acumulable=0;
+		for (int i = 0; i < figuritasActuales.length; i++) {
+			if(figuritasDisponibles[i]!=null && figuritasActuales[i]!=null) {
+				for (int j = 0; j < figuritasActuales.length; j++) {
+					if(figuritasDisponibles[i].getCodigo().equals(figuritasActuales[j].getCodigo())) {
+						acumulable++;
+						
+						porcentaje=(acumulable*porcentajequesemultiplica)/figuritasDisponibles.length;
+						
+					}
+				}
+			}
+		}
+		
+		
+		
 		/*
 		 * Debe calcular el porcentaje de figuritas del album que está completo. Para
 		 * esto se debe basar en la información de las figuritasDisponibles en relación
 		 * a las figuritasActuales que se tiene en el album.
 		 */
-		return 0.0;
+		return porcentaje;
+	}
+
+	@Override
+	public String toString() {
+		return "Album [figuritasActuales=" + Arrays.toString(figuritasActuales) + "]";
 	}
 
 }
