@@ -15,7 +15,7 @@ public class TestAlbum {
 		Album actual = new Album();
 		Album.inicializarCodigosDeFiguritas();
 		int opcionIngresada;
-		
+
 		System.out.println("Bienvenido album de figuritas Panini Virtual");
 		do {
 			mostrarMenu();
@@ -85,7 +85,7 @@ public class TestAlbum {
 
 	private static void comprarSobre(Album actual) {
 		Figurita compradas[] = actual.comprarSobre();
-		
+
 		System.out.println("Las figuritas son");
 		for (int i = 0; i < compradas.length; i++) {
 			actual.agregarFigurita(compradas[i]);
@@ -105,6 +105,16 @@ public class TestAlbum {
 	}
 
 	private static void visualizarFiguritasActuales(Album actual) {
+		Figurita verFiguritas[] = new Figurita[704];
+		actual.ordenarFiguritasActuales();
+		
+		System.out.println("Las figuriras actuales son: ");
+		verFiguritas= actual.getFiguritasActuales();
+		for (int i = 0; i < verFiguritas.length; i++) {
+			if(verFiguritas[i]!=null) {
+				System.out.println(verFiguritas[i].toString());
+			}
+		}
 		/*
 		 * Se deben mostrar las figuritas que posee el usuario de manera ordenada.
 		 */

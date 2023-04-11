@@ -93,7 +93,7 @@ public class Album {
 
 	public void agregarFigurita(Figurita nueva) {
 		boolean sePudoAgregar = false;
-		
+
 		for (int i = 0; i < figuritasActuales.length; i++) {
 			if (figuritasActuales[i] == null && !sePudoAgregar) {
 				figuritasActuales[i] = nueva;
@@ -106,39 +106,34 @@ public class Album {
 	}
 
 	public void ordenarFiguritasActuales() {
-		Figurita auxiliar=null;
-		boolean sepudo=false;
+		Figurita auxiliar = null;
+		boolean sepudo = false;
 		for (int i = 0; i < figuritasActuales.length; i++) {
-			for (int j = 0; j < figuritasActuales.length-1; j++) {
-				if(figuritasActuales[i]!=null &&figuritasActuales[j+1]!=null ) {
-					if(figuritasActuales[j].getCodigo().compareTo(figuritasActuales[j+1].getCodigo())<0) {
-						auxiliar=figuritasActuales[j+1];
-						figuritasActuales[j+1]=figuritasActuales[j];
-						figuritasActuales[j]=auxiliar;
-						sepudo=true;
+			for (int j = 0; j < figuritasActuales.length - 1; j++) {
+				if (figuritasActuales[i] != null && figuritasActuales[j + 1] != null) {
+					if (figuritasActuales[j].getCodigo().compareTo(figuritasActuales[j + 1].getCodigo()) < 0) {
+						auxiliar = figuritasActuales[j + 1];
+						figuritasActuales[j + 1] = figuritasActuales[j];
+						figuritasActuales[j] = auxiliar;
+						sepudo = true;
+					}
+				}
+
 			}
 		}
-		
-			}
-		}
-		
+
 		/*
 		 * Debe ordenar el array figuritasActuales
 		 */
 	}
 
 	public boolean elAlbumEstaCompleto() {
-		boolean estaCompleto=false;
-		if(calcularPorcentajeCompletado()==100)
-		estaCompleto=true;
+		boolean estaCompleto = false;
+		if (calcularPorcentajeCompletado() == 100)
+			estaCompleto = true;
 		else {
-			estaCompleto=false;
+			estaCompleto = false;
 		}
-		
-		
-		
-		
-		
 		/*
 		 * Debe verificar que todas las figuritas disponibles estén presentes al menos
 		 * una vez en las figuritas actuales
@@ -146,26 +141,22 @@ public class Album {
 		return estaCompleto;
 	}
 
-	
 	public double calcularPorcentajeCompletado() {
-		double porcentaje =0;
-		double porcentajequesemultiplica=100;
-		double acumulable=0;
+		double porcentaje = 0;
+		double porcentajequesemultiplica = 100;
+		double acumulable = 0;
 		for (int i = 0; i < figuritasActuales.length; i++) {
-			if(figuritasDisponibles[i]!=null && figuritasActuales[i]!=null) {
+			if (figuritasDisponibles[i] != null && figuritasActuales[i] != null) {
 				for (int j = 0; j < figuritasActuales.length; j++) {
-					if(figuritasDisponibles[i].getCodigo().equals(figuritasActuales[j].getCodigo())) {
+					if (figuritasDisponibles[i].getCodigo().equals(figuritasActuales[j].getCodigo())) {
 						acumulable++;
-						
-						porcentaje=(acumulable*porcentajequesemultiplica)/figuritasDisponibles.length;
-						
+
+						porcentaje = (acumulable * porcentajequesemultiplica) / figuritasDisponibles.length;
+
 					}
 				}
 			}
 		}
-		
-		
-		
 		/*
 		 * Debe calcular el porcentaje de figuritas del album que está completo. Para
 		 * esto se debe basar en la información de las figuritasDisponibles en relación
@@ -174,9 +165,16 @@ public class Album {
 		return porcentaje;
 	}
 
+	public Figurita[] getFiguritasActuales() {
+		return figuritasActuales;
+	}
+
+	public void setFiguritasActuales(Figurita[] figuritasActuales) {
+		this.figuritasActuales = figuritasActuales;
+	}
+
 	@Override
 	public String toString() {
 		return "Album [figuritasActuales=" + Arrays.toString(figuritasActuales) + "]";
 	}
-
 }
